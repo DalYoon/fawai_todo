@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 
-import "../widgets/ToDoList.dart";
 import "../widgets/ListHeader.dart";
+import "../widgets/ToDoList.dart";
 
 class Home extends StatefulWidget {
   @override
@@ -20,16 +20,17 @@ class _Home extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: CustomScrollView(
-      slivers: <Widget>[
-        ListHeader(
-          addToDo: addToDo,
-        ),
-        ToDoList(
-          toDos: toDos,
-          addToDo: addToDo,
-        )
-      ],
-    ));
+      body: CustomScrollView(
+        slivers: <Widget>[
+          ListHeader(
+            addToDo: addToDo,
+          ),
+          ToDoList(
+            toDos: toDos,
+            addToDo: addToDo,
+          ),
+        ],
+      ),
+    );
   }
 }

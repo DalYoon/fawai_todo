@@ -21,6 +21,5 @@ class ToDoList extends StatelessWidget {
             .toList(),
       ),
     );
-    ;
   }
 }
