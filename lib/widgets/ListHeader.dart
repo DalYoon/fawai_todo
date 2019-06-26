@@ -1,7 +1,10 @@
 import "package:flutter/material.dart";
-// import "../../routes.dart";
 
-class ListHeaderPresenter extends StatelessWidget {
+class ListHeader extends StatelessWidget {
+  final addToDo;
+
+  ListHeader({this.addToDo});
+
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
@@ -18,6 +21,7 @@ class ListHeaderPresenter extends StatelessWidget {
               icon: const Icon(Icons.add_circle),
               tooltip: 'Add new entry',
               onPressed: () {
+                this.addToDo();
                 // Navigator.pushNamed(context, Routes.detail);
               }),
         ]);

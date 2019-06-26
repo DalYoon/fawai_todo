@@ -1,5 +1,5 @@
-import "screens/home.dart";
-import "screens/detail.dart";
+import "screens/Home.dart";
+import "screens/Detail.dart";
 
 class Routes {
   static final home = "/";
