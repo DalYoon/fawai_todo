@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 
 import "../widgets/ListHeader.dart";
 import "../widgets/ToDoList.dart";
+import "../data.dart";
 
 class Home extends StatefulWidget {
   @override
@@ -9,11 +10,19 @@ class Home extends StatefulWidget {
 }
 
 class _Home extends State<Home> {
-  List<String> toDos = ["first", "second"];
+  List<ToDoModel> toDos = [
+    ToDoModel(title: "first", isDone: false, isEditing: false)
+  ];
 
   addToDo() {
     setState(() {
-      toDos.add("added");
+      toDos.add(ToDoModel(title: "added", isDone: false, isEditing: false));
+    });
+  }
+
+  toggleToDo(int index) {
+    setState(() {
+      toDos[index].isDone = !toDos[index].isDone;
     });
   }
 
@@ -27,7 +36,7 @@ class _Home extends State<Home> {
           ),
           ToDoList(
             toDos: toDos,
-            addToDo: addToDo,
+            toggleToDo: toggleToDo,
           ),
         ],
       ),

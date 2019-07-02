@@ -1,23 +1,42 @@
 import "package:flutter/material.dart";
+import "../data.dart";
 
-class ToDoList extends StatelessWidget {
-  final List<String> toDos;
-  final addToDo;
+import "./ToDo.dart";
 
-  ToDoList({@required this.toDos, this.addToDo});
+class ToDoList extends StatefulWidget {
+  final List<ToDoModel> toDos;
+  final toggleToDo;
+
+  ToDoList({@required this.toDos, this.toggleToDo});
+
+  @override
+  _ToDoList createState() => _ToDoList(toDos: toDos, toggleToDo: toggleToDo);
+}
+
+class _ToDoList extends State<ToDoList> {
+  final List<ToDoModel> toDos;
+  final toggleToDo;
+
+  _ToDoList({@required this.toDos, @required this.toggleToDo});
 
   @override
   Widget build(BuildContext context) {
     return SliverList(
       delegate: SliverChildListDelegate(
-        this
-            .toDos
-            .map((todo) => Card(
+        toDos
+            .asMap()
+            .map((index, toDo) => MapEntry(
+                index,
+                Card(
                   child: ListTile(
-                    title: Text(todo),
-                    onTap: this.addToDo,
+                    title: ToDo(
+                        title: toDo.title,
+                        isDone: toDo.isDone,
+                        isEditing: toDo.isEditing),
+                    onTap: () => toggleToDo(index),
                   ),
-                ))
+                )))
+            .values
             .toList(),
       ),
     );
